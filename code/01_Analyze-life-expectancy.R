@@ -51,3 +51,19 @@ le_averages
 
 #save this table as a CSV file in the data sub-folder
 write_csv(le_averages, "./data/le_averages.csv")
+
+# R Code
+# Calculate the LE for each state, separately by race and gender:
+le_averages <- le_data %>% 
+  group_by(state, race, sex) %>%
+  summarise(mean_LE = mean(LE)) 
+
+# print the first 10 rows to the screen. By default, R rounds the numeric 
+# information in the display to make it more compact 
+le_averages
+# alternatively, type View(le_averages) in the Console to open up a Viewer 
+# window, or click the table icon beside the le_averages objects in the 
+# Environment pane (upper right hand panel of RStudio).
+
+#save this table as a CSV file in the data sub-folder
+write_csv(le_averages, "./data/le_averages.csv")
